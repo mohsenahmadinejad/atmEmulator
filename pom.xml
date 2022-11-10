@@ -9,16 +9,16 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mohsen</groupId>
-    <artifactId>atmEmulator</artifactId>
+    <artifactId>atm-emulator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>atmEmulator</name>
-    <description>atmEmulator</description>
+    <name>atm-emulator</name>
+    <description>atm-emulator</description>
     <properties>
         <java.version>11</java.version>
     </properties>
     <packaging>pom</packaging>
     <modules>
-        <module>bankService</module>
+        <module>bank-service</module>
     </modules>
 
     <dependencies>
@@ -37,19 +37,18 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.7.5</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-dependencies</artifactId>-->
+<!--                <version>2.7.5</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
 
-        </dependencies>
-
-    </dependencyManagement>
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
 
     <build>
         <pluginManagement>

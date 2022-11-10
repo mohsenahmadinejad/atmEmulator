@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Min;
@@ -24,6 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/card")
+@Validated
 public class CardController {
     @Autowired
     private CardService cardService;
@@ -39,26 +41,26 @@ public class CardController {
     @PutMapping("/cash-deposit/{cardNo}/{amount}")
     public ResponseEntity<CardDto> cashDeposit(@PathVariable(name = "cardNo") String cardNo,
                                                @PathVariable(name = "amount") @Positive BigDecimal amount) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.cashDeposit(cardNo,amount));
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(cardService.cashDeposit(cardNo,amount));
     }
 
     @PutMapping("/cash-withdrawal/{cardNo}/{amount}")
     public ResponseEntity<CardDto> cashWithdrawal(@PathVariable(name = "cardNo") String cardNo,
                                                   @PathVariable(name = "amount") @Positive BigDecimal amount) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.cashWithdrawal(cardNo,amount));
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(cardService.cashWithdrawal(cardNo,amount));
     }
 
 
     @GetMapping("/check-balance/{cardNo}")
     public ResponseEntity<BigDecimal> checkBalance(@PathVariable(name = "cardNo") String cardNo) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.checkBalance(cardNo));
+        return ResponseEntity.status(HttpStatus.OK).body(cardService.checkBalance(cardNo));
     }
 
     @PatchMapping("/preferred-authentication-method/{cardNo}/{method}")
     public ResponseEntity setPreferredAuthenticationMethod(@PathVariable(name = "cardNo") String cardNo,
                                                  @PathVariable(name = "method") AuthenticationMethodEnum method) {
         cardService.setPreferredAuthenticationMethod(cardNo,method);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
 

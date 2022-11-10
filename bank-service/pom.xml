@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.mohsen</groupId>
-        <artifactId>atmEmulator</artifactId>
+        <artifactId>atm-emulator</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mohsen</groupId>
-    <artifactId>bankService</artifactId>
+    <artifactId>bank-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>bankService</name>
     <description>bankService</description>

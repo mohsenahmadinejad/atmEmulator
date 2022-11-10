@@ -13,8 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.math.BigDecimal;
 
 
@@ -41,7 +43,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    @Transactional
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public Account cashDeposit(Account account, BigDecimal amount) {
 
         account.setBalance(account.getBalance().add(amount));
@@ -59,7 +61,6 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    @Transactional
     public Account cashWithdrawal(Account account, BigDecimal amount) {
         if (account.getBalance().compareTo(amount) < 0){
            throw  new NotEnoughBalanceException("not enough balance "    );
