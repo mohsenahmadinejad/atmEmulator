@@ -1,6 +1,5 @@
 package com.mohsen.bankservice.controller;
 
-
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
 
 @Api( tags = "Clients")
 @RestController
@@ -32,16 +30,13 @@ public class WellcomeController {
 
     @GetMapping("/hello2")
     public ResponseEntity<String> sayHello2() throws InterruptedException {
-//        Thread.sleep(6000);
+        Thread.sleep(6000);
         return ResponseEntity.ok("Hi..") ;
     }
 
 
     public ResponseEntity<String>  helloFallback(Exception e)  {
-        return ResponseEntity.ok("The hello api is not accessible ..");
+        return ResponseEntity.ok("Nemishe..");
     }
 
 }
-
-
-
