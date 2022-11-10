@@ -3,6 +3,7 @@ package com.mohsen.bankservice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.*;
@@ -18,6 +19,10 @@ import java.util.List;
 @SpringBootApplication
 @EnableSwagger2
 public class BankServiceApplication {
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(BankServiceApplication.class, args);
