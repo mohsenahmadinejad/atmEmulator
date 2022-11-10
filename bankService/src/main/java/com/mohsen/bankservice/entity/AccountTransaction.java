@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class AccountTransaction {
+public class AccountTransaction extends  Auditable<String> {
 
     @Id
     @Column(name = "id")

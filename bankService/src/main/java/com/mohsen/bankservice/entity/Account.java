@@ -16,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Account {
+public class Account extends Auditable<String> {
 
     @Id
     @Column(name = "id")
