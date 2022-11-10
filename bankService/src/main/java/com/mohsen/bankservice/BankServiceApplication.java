@@ -34,6 +34,10 @@ public class BankServiceApplication {
         return new ApiKey("JWT", "Authorization", "header");
     }
 
+    private ApiKey preferredAuthenticationMethod () {
+        return new ApiKey("JWT", "MethodType", "header");
+    }
+
     private SecurityContext securityContext() {
         return SecurityContext.builder().securityReferences(defaultAuth()).build();
     }

@@ -6,9 +6,9 @@ import com.mohsen.bankservice.dto.AccountDto;
 import com.mohsen.bankservice.entity.Account;
 import com.mohsen.bankservice.entity.AccountTransaction;
 import com.mohsen.bankservice.enums.TransactionType;
+import com.mohsen.bankservice.exception.NotEnoughBalanceException;
 import com.mohsen.bankservice.repository.AccountRepository;
 import com.mohsen.bankservice.repository.AccountTransactionRepository;
-import io.vavr.collection.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
-import java.util.Arrays;
 
 
 @Service
@@ -63,7 +62,7 @@ public class AccountServiceImpl implements AccountService {
     @Transactional
     public Account cashWithdrawal(Account account, BigDecimal amount) {
         if (account.getBalance().compareTo(amount) < 0){
-           throw  new RuntimeException("no enough balance "    );
+           throw  new NotEnoughBalanceException("not enough balance "    );
         }
 
         account.setBalance(account.getBalance().subtract(amount));

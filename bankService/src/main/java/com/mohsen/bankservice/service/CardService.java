@@ -3,6 +3,7 @@ package com.mohsen.bankservice.service;
 
 import com.mohsen.bankservice.dto.CardDto;
 import com.mohsen.bankservice.dto.UserDto;
+import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
 
 import java.math.BigDecimal;
 
@@ -15,4 +16,5 @@ public interface CardService {
 
     BigDecimal checkBalance(String cardNo);
 
+    void setPreferredAuthenticationMethod(String cardNo, AuthenticationMethodEnum method);
 }

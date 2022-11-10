@@ -7,6 +7,8 @@ import com.mohsen.bankservice.dto.UserDto;
 import com.mohsen.bankservice.entity.Account;
 import com.mohsen.bankservice.entity.Card;
 import com.mohsen.bankservice.entity.User;
+import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
+import com.mohsen.bankservice.exception.CardNotFoundException;
 import com.mohsen.bankservice.repository.AccountRepository;
 import com.mohsen.bankservice.repository.CardRepository;
 import com.mohsen.bankservice.repository.UserRepository;
@@ -46,12 +48,17 @@ public class CardServiceImpl implements CardService {
 
         Card card = new Card();
         card=modelMapper.map(cardDto,Card.class);
+        card.setPin(passwordEncoder.encode(card.getPin()));
+        card.setFingerPrint(passwordEncoder.encode(card.getFingerPrint()));
         return cardRepository.save(card).getId();
     }
 
     @Override
     public CardDto cashDeposit(String cardNo, BigDecimal amount) {
         Card card= cardRepository.findByCardNo(cardNo);
+        if (card == null ){
+            throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));
+        }
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         account=accountService.cashDeposit(account,amount);
         CardDto cardDto=new CardDto();
@@ -63,6 +70,9 @@ public class CardServiceImpl implements CardService {
     @Override
     public CardDto cashWithdrawal(String cardNo, BigDecimal amount) {
         Card card= cardRepository.findByCardNo(cardNo);
+        if (card == null ){
+            throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));
+        }
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         account=accountService.cashWithdrawal(account,amount);
         CardDto cardDto=new CardDto();
@@ -74,8 +84,20 @@ public class CardServiceImpl implements CardService {
     @Override
     public BigDecimal checkBalance(String cardNo) {
         Card card= cardRepository.findByCardNo(cardNo);
+        if (card == null ){
+            throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));
+        }
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         return account.getBalance();
+    }
+    public void setPreferredAuthenticationMethod(String cardNo, AuthenticationMethodEnum method){
+        Card card= cardRepository.findByCardNo(cardNo);
+        if (card == null ){
+            throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));
+        }
+        card.setPreferredAuthenticationMethod(method);
+        cardRepository.save(card);
+        return ;
     }
 
 

@@ -4,6 +4,7 @@ package com.mohsen.bankservice.controller;
 import com.mohsen.bankservice.dto.AccountDto;
 import com.mohsen.bankservice.dto.CardDto;
 import com.mohsen.bankservice.dto.UserDto;
+import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
 import com.mohsen.bankservice.security.entity.AuthRequest;
 import com.mohsen.bankservice.security.util.JwtUtil;
 import com.mohsen.bankservice.service.CardService;
@@ -26,6 +27,7 @@ import java.util.List;
 public class CardController {
     @Autowired
     private CardService cardService;
+
 
 
 
@@ -52,6 +54,12 @@ public class CardController {
         return ResponseEntity.status(HttpStatus.CREATED).body(cardService.checkBalance(cardNo));
     }
 
+    @PatchMapping("/preferred-authentication-method/{cardNo}/{method}")
+    public ResponseEntity setPreferredAuthenticationMethod(@PathVariable(name = "cardNo") String cardNo,
+                                                 @PathVariable(name = "method") AuthenticationMethodEnum method) {
+        cardService.setPreferredAuthenticationMethod(cardNo,method);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
 
 }
