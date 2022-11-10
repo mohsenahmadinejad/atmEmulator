@@ -1,12 +1,13 @@
 package com.mohsen.bankservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -18,8 +19,8 @@ import java.util.List;
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String accountNo;
@@ -29,4 +30,6 @@ public class Account {
     @JoinColumn(name="FK_ACCOUNT_ID",referencedColumnName = "id")
     private List<Card> cardList;
 
+    @Version
+    private Long version;
 }

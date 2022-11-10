@@ -6,6 +6,7 @@ import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -19,7 +20,7 @@ public class CardDto {
     private String firstName;
     private String lastName;
     private AuthenticationMethodEnum preferredAuthenticationMethod;
-    private Account account;
+    private BigDecimal accountBalance;
 
 
 }

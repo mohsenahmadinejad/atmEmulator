@@ -12,5 +12,5 @@ public class AccountDto {
     private Long id;
     private String accountNo;
     private BigDecimal balance;
-
+    private Long version;
 }

@@ -32,4 +32,5 @@ public class Card {
     @ManyToOne
     @JoinColumn(name = "FK_ACCOUNT_ID",referencedColumnName ="ID" )
     private Account account;
+
 }

@@ -15,6 +15,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -25,10 +28,22 @@ public class CardController {
     private CardService cardService;
 
 
+
     @PostMapping
     public ResponseEntity<Long> addCard(@RequestBody CardDto cardDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(cardService.addCard(cardDto));
     }
+
+    @PutMapping("/cash-deposit/{amount}")
+    public ResponseEntity<CardDto> cashDeposit(@RequestBody CardDto cardDto, @PathVariable @Positive BigDecimal amount) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.cashDeposit(cardDto,amount));
+    }
+
+    @PutMapping("/cash-withdrawal/{amount}")
+    public ResponseEntity<CardDto> cashcWithdrawal(@RequestBody CardDto cardDto, @PathVariable @Positive BigDecimal amount) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.cashWithdrawal(cardDto,amount));
+    }
+
 
 
 }
