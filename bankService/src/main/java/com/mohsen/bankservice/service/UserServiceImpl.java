@@ -3,7 +3,7 @@ package com.mohsen.bankservice.service;
 
 
 import com.mohsen.bankservice.dto.UserDto;
-import com.mohsen.bankservice.model.User;
+import com.mohsen.bankservice.entity.User;
 import com.mohsen.bankservice.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

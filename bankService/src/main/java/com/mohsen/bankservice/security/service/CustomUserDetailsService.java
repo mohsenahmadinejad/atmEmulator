@@ -2,7 +2,7 @@ package com.mohsen.bankservice.security.service;
 
 
 
-import com.mohsen.bankservice.model.User;
+import com.mohsen.bankservice.entity.User;
 import com.mohsen.bankservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
