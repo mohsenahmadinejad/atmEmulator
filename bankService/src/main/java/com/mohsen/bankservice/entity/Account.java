@@ -30,6 +30,10 @@ public class Account {
     @JoinColumn(name="FK_ACCOUNT_ID",referencedColumnName = "id")
     private List<Card> cardList;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="FK_ACCOUNT_ID",referencedColumnName = "id")
+    private List<AccountTransaction> accountTransactionList;
+
     @Version
     private Long version;
 }
