@@ -50,21 +50,32 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public CardDto cashDeposit(CardDto cardDto, BigDecimal amount) {
-        Card card= cardRepository.findByCardNo(cardDto.getCardNo());
+    public CardDto cashDeposit(String cardNo, BigDecimal amount) {
+        Card card= cardRepository.findByCardNo(cardNo);
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         account=accountService.cashDeposit(account,amount);
+        CardDto cardDto=new CardDto();
+        cardDto=modelMapper.map(card,CardDto.class);
         cardDto.setAccountBalance(account.getBalance());
         return cardDto;
     }
 
     @Override
-    public CardDto cashWithdrawal(CardDto cardDto, BigDecimal amount) {
-        Card card= cardRepository.findByCardNo(cardDto.getCardNo());
+    public CardDto cashWithdrawal(String cardNo, BigDecimal amount) {
+        Card card= cardRepository.findByCardNo(cardNo);
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         account=accountService.cashWithdrawal(account,amount);
+        CardDto cardDto=new CardDto();
+        cardDto=modelMapper.map(card,CardDto.class);
         cardDto.setAccountBalance(account.getBalance());
         return cardDto;
+    }
+
+    @Override
+    public BigDecimal checkBalance(String cardNo) {
+        Card card= cardRepository.findByCardNo(cardNo);
+        Account account=accountRepository.findById(card.getAccount().getId()).get();
+        return account.getBalance();
     }
 
 

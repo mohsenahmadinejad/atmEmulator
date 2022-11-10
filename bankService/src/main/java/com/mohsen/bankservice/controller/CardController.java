@@ -34,14 +34,22 @@ public class CardController {
         return ResponseEntity.status(HttpStatus.CREATED).body(cardService.addCard(cardDto));
     }
 
-    @PutMapping("/cash-deposit/{amount}")
-    public ResponseEntity<CardDto> cashDeposit(@RequestBody CardDto cardDto, @PathVariable @Positive BigDecimal amount) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.cashDeposit(cardDto,amount));
+    @PutMapping("/cash-deposit/{cardNo}/{amount}")
+    public ResponseEntity<CardDto> cashDeposit(@PathVariable(name = "cardNo") String cardNo,
+                                               @PathVariable(name = "amount") @Positive BigDecimal amount) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.cashDeposit(cardNo,amount));
     }
 
-    @PutMapping("/cash-withdrawal/{amount}")
-    public ResponseEntity<CardDto> cashcWithdrawal(@RequestBody CardDto cardDto, @PathVariable @Positive BigDecimal amount) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.cashWithdrawal(cardDto,amount));
+    @PutMapping("/cash-withdrawal/{cardNo}/{amount}")
+    public ResponseEntity<CardDto> cashWithdrawal(@PathVariable(name = "cardNo") String cardNo,
+                                                  @PathVariable(name = "amount") @Positive BigDecimal amount) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.cashWithdrawal(cardNo,amount));
+    }
+
+
+    @GetMapping("/check-balance/{cardNo}")
+    public ResponseEntity<BigDecimal> checkBalance(@PathVariable(name = "cardNo") String cardNo) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(cardService.checkBalance(cardNo));
     }
 
 

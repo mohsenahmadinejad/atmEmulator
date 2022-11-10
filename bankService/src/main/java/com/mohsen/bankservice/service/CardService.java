@@ -10,7 +10,9 @@ public interface CardService {
 
     Long addCard(CardDto cardDto);
 
-    CardDto cashDeposit(CardDto cardDto, BigDecimal amount);
-    CardDto cashWithdrawal(CardDto cardDto, BigDecimal amount);
+    CardDto cashDeposit(String cardNo, BigDecimal amount);
+    CardDto cashWithdrawal(String cardNo, BigDecimal amount);
+
+    BigDecimal checkBalance(String cardNo);
 
 }

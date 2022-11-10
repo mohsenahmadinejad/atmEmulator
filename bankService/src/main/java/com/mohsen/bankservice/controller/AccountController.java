@@ -24,8 +24,6 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
 
-
-
     @PostMapping
     public ResponseEntity<Long> addAccount(@RequestBody AccountDto accountDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(accountService.addAccount(accountDto));
