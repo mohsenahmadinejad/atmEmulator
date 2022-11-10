@@ -6,13 +6,13 @@
         <groupId>com.mohsen</groupId>
         <artifactId>atm-emulator</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mohsen</groupId>
     <artifactId>bank-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bankService</name>
-    <description>bankService</description>
+    <name>bank-service</name>
+    <description>bank-service</description>
     <properties>
         <java.version>11</java.version>
     </properties>
