@@ -11,17 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-@Api( tags = "Clients")
+@Api( tags = "WELCOME")
 @RestController
-@RequestMapping("/wellcome")
-public class WellcomeController {
+@RequestMapping("/welcome")
+public class WelcomeController {
 
     @Value("${welcome.message}")
     private String welcomeMessage;
 
     @GetMapping("/welcome")
     public ResponseEntity<String> sayHello() throws InterruptedException {
-        Thread.sleep(6000);
         return ResponseEntity.ok(welcomeMessage) ;
     }
 
