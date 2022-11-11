@@ -1,6 +1,5 @@
 package com.mohsen.bankservice.dto;
 
-import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
 import lombok.Data;
 
 import java.math.BigDecimal;

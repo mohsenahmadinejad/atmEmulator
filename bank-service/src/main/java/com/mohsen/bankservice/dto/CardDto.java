@@ -1,13 +1,9 @@
 package com.mohsen.bankservice.dto;
 
-import com.mohsen.bankservice.entity.Account;
-import com.mohsen.bankservice.entity.Card;
-import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
+import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Data
 public class CardDto {

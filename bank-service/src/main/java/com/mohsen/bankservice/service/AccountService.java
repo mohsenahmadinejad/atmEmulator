@@ -2,7 +2,7 @@ package com.mohsen.bankservice.service;
 
 
 import com.mohsen.bankservice.dto.AccountDto;
-import com.mohsen.bankservice.entity.Account;
+import com.mohsen.bankservice.model.entity.Account;
 
 import java.math.BigDecimal;
 

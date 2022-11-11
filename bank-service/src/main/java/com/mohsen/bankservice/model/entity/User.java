@@ -1,4 +1,4 @@
-package com.mohsen.bankservice.entity;
+package com.mohsen.bankservice.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

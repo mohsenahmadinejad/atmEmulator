@@ -3,9 +3,9 @@ package com.mohsen.bankservice.service;
 
 
 import com.mohsen.bankservice.dto.AccountDto;
-import com.mohsen.bankservice.entity.Account;
-import com.mohsen.bankservice.entity.AccountTransaction;
-import com.mohsen.bankservice.enums.TransactionType;
+import com.mohsen.bankservice.model.entity.Account;
+import com.mohsen.bankservice.model.entity.AccountTransaction;
+import com.mohsen.bankservice.model.enums.TransactionType;
 import com.mohsen.bankservice.exception.NotEnoughBalanceException;
 import com.mohsen.bankservice.repository.AccountRepository;
 import com.mohsen.bankservice.repository.AccountTransactionRepository;

@@ -3,15 +3,13 @@ package com.mohsen.bankservice.service;
 
 
 import com.mohsen.bankservice.dto.CardDto;
-import com.mohsen.bankservice.dto.UserDto;
-import com.mohsen.bankservice.entity.Account;
-import com.mohsen.bankservice.entity.Card;
-import com.mohsen.bankservice.entity.User;
-import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
+import com.mohsen.bankservice.dto.ReqTransactionDto;
+import com.mohsen.bankservice.model.entity.Account;
+import com.mohsen.bankservice.model.entity.Card;
+import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
 import com.mohsen.bankservice.exception.CardNotFoundException;
 import com.mohsen.bankservice.repository.AccountRepository;
 import com.mohsen.bankservice.repository.CardRepository;
-import com.mohsen.bankservice.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -54,7 +52,9 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public CardDto cashDeposit(String cardNo, BigDecimal amount) {
+    public CardDto cashDeposit(ReqTransactionDto reqTransactionDto) {
+        String cardNo=reqTransactionDto.getCardNo();
+        BigDecimal amount=reqTransactionDto.getAmount();
         Card card= cardRepository.findByCardNo(cardNo);
         if (card == null ){
             throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));
@@ -68,7 +68,9 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public CardDto cashWithdrawal(String cardNo, BigDecimal amount) {
+    public CardDto cashWithdrawal(ReqTransactionDto reqTransactionDto) {
+        String cardNo=reqTransactionDto.getCardNo();
+        BigDecimal amount=reqTransactionDto.getAmount();
         Card card= cardRepository.findByCardNo(cardNo);
         if (card == null ){
             throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));

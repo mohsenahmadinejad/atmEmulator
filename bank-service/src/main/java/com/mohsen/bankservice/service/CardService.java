@@ -2,8 +2,8 @@ package com.mohsen.bankservice.service;
 
 
 import com.mohsen.bankservice.dto.CardDto;
-import com.mohsen.bankservice.dto.UserDto;
-import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
+import com.mohsen.bankservice.dto.ReqTransactionDto;
+import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
 
 import java.math.BigDecimal;
 
@@ -11,8 +11,8 @@ public interface CardService {
 
     Long addCard(CardDto cardDto);
 
-    CardDto cashDeposit(String cardNo, BigDecimal amount);
-    CardDto cashWithdrawal(String cardNo, BigDecimal amount);
+    CardDto cashDeposit(ReqTransactionDto reqTransactionDto);
+    CardDto cashWithdrawal(ReqTransactionDto reqTransactionDto);
 
     BigDecimal checkBalance(String cardNo);
 

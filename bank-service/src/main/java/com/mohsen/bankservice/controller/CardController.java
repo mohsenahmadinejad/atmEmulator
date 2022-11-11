@@ -1,36 +1,26 @@
 package com.mohsen.bankservice.controller;
 
 
-import com.mohsen.bankservice.dto.AccountDto;
 import com.mohsen.bankservice.dto.CardDto;
-import com.mohsen.bankservice.dto.UserDto;
-import com.mohsen.bankservice.enums.AuthenticationMethodEnum;
-import com.mohsen.bankservice.security.entity.AuthRequest;
-import com.mohsen.bankservice.security.util.JwtUtil;
+import com.mohsen.bankservice.dto.ReqTransactionDto;
+import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
 import com.mohsen.bankservice.service.CardService;
-import com.mohsen.bankservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
-import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/card")
+@RequestMapping("/api/cards")
 @Validated
 public class CardController {
     @Autowired
     private CardService cardService;
-
-
 
 
     @PostMapping
@@ -38,27 +28,25 @@ public class CardController {
         return ResponseEntity.status(HttpStatus.CREATED).body(cardService.addCard(cardDto));
     }
 
-    @PutMapping("/cash-deposit/{cardNo}/{amount}")
-    public ResponseEntity<CardDto> cashDeposit(@PathVariable(name = "cardNo") String cardNo,
-                                               @PathVariable(name = "amount") @Positive BigDecimal amount) {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(cardService.cashDeposit(cardNo,amount));
+    @PostMapping("/cash-deposit")
+    public ResponseEntity<CardDto> cashDeposit(@RequestBody ReqTransactionDto reqTransactionDto) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(cardService.cashDeposit(reqTransactionDto));
     }
 
-    @PutMapping("/cash-withdrawal/{cardNo}/{amount}")
-    public ResponseEntity<CardDto> cashWithdrawal(@PathVariable(name = "cardNo") String cardNo,
-                                                  @PathVariable(name = "amount") @Positive BigDecimal amount) {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(cardService.cashWithdrawal(cardNo,amount));
+    @PostMapping("/cash-withdrawal")
+    public ResponseEntity<CardDto> cashWithdrawal(@RequestBody ReqTransactionDto reqTransactionDto) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(cardService.cashWithdrawal(reqTransactionDto));
     }
 
 
-    @GetMapping("/check-balance/{cardNo}")
+    @GetMapping("/{cardNo}/check-balance")
     public ResponseEntity<BigDecimal> checkBalance(@PathVariable(name = "cardNo") String cardNo) {
         return ResponseEntity.status(HttpStatus.OK).body(cardService.checkBalance(cardNo));
     }
 
-    @PatchMapping("/preferred-authentication-method/{cardNo}/{method}")
+    @PatchMapping("/{cardNo}/preferred-authentication-method/{method}")
     public ResponseEntity setPreferredAuthenticationMethod(@PathVariable(name = "cardNo") String cardNo,
-                                                 @PathVariable(name = "method") AuthenticationMethodEnum method) {
+                                                           @PathVariable(name = "method") AuthenticationMethodEnum method) {
         cardService.setPreferredAuthenticationMethod(cardNo,method);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
