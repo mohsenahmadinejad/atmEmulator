@@ -5,7 +5,6 @@ package com.mohsen.bankservice.security.service;
 import com.mohsen.bankservice.model.entity.Card;
 import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
 import com.mohsen.bankservice.repository.CardRepository;
-import com.mohsen.bankservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,8 +15,6 @@ import java.util.ArrayList;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-    @Autowired
-    private UserRepository repository;
 
     @Autowired
     private CardRepository cardRepository;

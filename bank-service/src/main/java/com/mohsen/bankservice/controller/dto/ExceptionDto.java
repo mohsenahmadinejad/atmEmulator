@@ -1,4 +1,4 @@
-package com.mohsen.bankservice.dto;
+package com.mohsen.bankservice.controller.dto;
 
 
 import lombok.AllArgsConstructor;
