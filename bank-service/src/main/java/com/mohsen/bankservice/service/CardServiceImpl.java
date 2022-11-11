@@ -2,9 +2,9 @@ package com.mohsen.bankservice.service;
 
 
 
-import com.mohsen.bankservice.controller.dto.CardDto;
-import com.mohsen.bankservice.controller.dto.ReqTransactionDto;
-import com.mohsen.bankservice.controller.dto.ResCardDto;
+import com.mohsen.bankservice.dto.CardDto;
+import com.mohsen.bankservice.dto.ReqTransactionDto;
+import com.mohsen.bankservice.dto.ResCardDto;
 import com.mohsen.bankservice.exception.NotPositiveAmountException;
 import com.mohsen.bankservice.model.entity.Account;
 import com.mohsen.bankservice.model.entity.Card;
@@ -40,11 +40,6 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public Long addCard(CardDto cardDto) {
-//        User user = new User();
-//        user=modelMapper.map(userDto,User.class);
-//
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        return userRepository.save(user).getId();
 
         Card card = new Card();
         card=modelMapper.map(cardDto,Card.class);

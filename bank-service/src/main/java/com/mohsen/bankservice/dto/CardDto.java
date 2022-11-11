@@ -1,4 +1,4 @@
-package com.mohsen.bankservice.controller.dto;
+package com.mohsen.bankservice.dto;
 
 import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
 import lombok.Data;

@@ -23,6 +23,7 @@ public class Card {
     private String fingerPrint;
     private String firstName;
     private String lastName;
+    private int failedAuthenticateCount;
 
     @Enumerated(EnumType.ORDINAL)
     private AuthenticationMethodEnum preferredAuthenticationMethod;
@@ -93,5 +94,13 @@ public class Card {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public int getFailedAuthenticateCount() {
+        return failedAuthenticateCount;
+    }
+
+    public void setFailedAuthenticateCount(int failedAuthenticateCount) {
+        this.failedAuthenticateCount = failedAuthenticateCount;
     }
 }

@@ -1,7 +1,7 @@
 package com.mohsen.bankservice.controller;
 
 
-import com.mohsen.bankservice.controller.dto.CardDto;
+import com.mohsen.bankservice.dto.CardDto;
 import com.mohsen.bankservice.security.entity.AuthRequest;
 import com.mohsen.bankservice.security.util.JwtUtil;
 import com.mohsen.bankservice.service.CardService;
