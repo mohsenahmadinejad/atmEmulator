@@ -1,6 +1,7 @@
-package com.mohsen.bankservice.exception;
+package com.mohsen.bankservice.exception.handler;
 
 import com.mohsen.bankservice.dto.ExceptionDto;
+import com.mohsen.bankservice.exception.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,16 @@ import java.time.format.DateTimeParseException;
 @Slf4j
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
+    @ExceptionHandler(UntAuthorizedException.class)
+    public ResponseEntity<ExceptionDto> unAuthorizedExceptionHandler(UntAuthorizedException exception, WebRequest request){
+        ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.UNAUTHORIZED,exception.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(exceptionDto);
+    }
+    @ExceptionHandler(CardIsBlockedException.class)
+    public ResponseEntity<ExceptionDto> cardIsBlockedExceptionHandler(CardIsBlockedException exception, WebRequest request){
+        ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.FORBIDDEN,exception.getMessage());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exceptionDto);
+    }
     @ExceptionHandler(NotEnoughBalanceException.class)
     public ResponseEntity<ExceptionDto> notEnoughBalanceExceptionHandler(NotEnoughBalanceException exception, WebRequest request){
         ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.BAD_REQUEST,exception.getMessage());

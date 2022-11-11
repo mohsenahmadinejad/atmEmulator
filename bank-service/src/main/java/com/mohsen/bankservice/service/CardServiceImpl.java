@@ -43,6 +43,7 @@ public class CardServiceImpl implements CardService {
 
         Card card = new Card();
         card=modelMapper.map(cardDto,Card.class);
+        card.setFailedAuthenticateCount(0);
         card.setPin(passwordEncoder.encode(card.getPin()));
         card.setFingerPrint(passwordEncoder.encode(card.getFingerPrint()));
         return cardRepository.save(card).getId();

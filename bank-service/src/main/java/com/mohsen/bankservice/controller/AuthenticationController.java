@@ -2,6 +2,10 @@ package com.mohsen.bankservice.controller;
 
 
 import com.mohsen.bankservice.dto.CardDto;
+import com.mohsen.bankservice.exception.CardIsBlockedException;
+import com.mohsen.bankservice.exception.UntAuthorizedException;
+import com.mohsen.bankservice.model.entity.Card;
+import com.mohsen.bankservice.repository.CardRepository;
 import com.mohsen.bankservice.security.entity.AuthRequest;
 import com.mohsen.bankservice.security.util.JwtUtil;
 import com.mohsen.bankservice.service.CardService;
@@ -18,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping()
-public class UserController {
+public class AuthenticationController {
 
     @Autowired
     private CardService cardService;
@@ -28,17 +32,32 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private CardRepository cardRepository;
+
 
     @PostMapping("/signIn")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+        Card card = cardRepository.findByCardNo(authRequest.getCardNumber());
+        if (card==null){
+            throw new UntAuthorizedException("invalid card number/password");
+        }else{
+            if(card.getFailedAuthenticateCount()>3){
+                throw new CardIsBlockedException("Card is blocked");
+            }
+        }
+
+
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
+                    new UsernamePasswordAuthenticationToken(authRequest.getCardNumber(), authRequest.getPassword())
             );
         } catch (Exception ex) {
-            throw new Exception("invalid username/password");
+            card.setFailedAuthenticateCount(card.getFailedAuthenticateCount()+1);
+            cardRepository.save(card);
+            throw new UntAuthorizedException("invalid card number/password");
         }
-        return jwtUtil.generateToken(authRequest.getUserName());
+        return jwtUtil.generateToken(authRequest.getCardNumber());
     }
 
     @PostMapping("/signUp")
