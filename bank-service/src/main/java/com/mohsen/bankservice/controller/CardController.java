@@ -4,6 +4,7 @@ package com.mohsen.bankservice.controller;
 import com.mohsen.bankservice.dto.CardDto;
 import com.mohsen.bankservice.dto.ReqAuthMethodDto;
 import com.mohsen.bankservice.dto.ReqTransactionDto;
+import com.mohsen.bankservice.dto.ResCardDto;
 import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
 import com.mohsen.bankservice.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,12 @@ public class CardController {
     }
 
     @PostMapping("/cash-deposit")
-    public ResponseEntity<CardDto> cashDeposit(@RequestBody ReqTransactionDto reqTransactionDto) {
+    public ResponseEntity<ResCardDto> cashDeposit(@RequestBody ReqTransactionDto reqTransactionDto) {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(cardService.cashDeposit(reqTransactionDto));
     }
 
     @PostMapping("/cash-withdrawal")
-    public ResponseEntity<CardDto> cashWithdrawal(@RequestBody ReqTransactionDto reqTransactionDto) {
+    public ResponseEntity<ResCardDto> cashWithdrawal(@RequestBody ReqTransactionDto reqTransactionDto) {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(cardService.cashWithdrawal(reqTransactionDto));
     }
 

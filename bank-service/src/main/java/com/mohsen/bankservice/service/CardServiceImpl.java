@@ -4,6 +4,7 @@ package com.mohsen.bankservice.service;
 
 import com.mohsen.bankservice.dto.CardDto;
 import com.mohsen.bankservice.dto.ReqTransactionDto;
+import com.mohsen.bankservice.dto.ResCardDto;
 import com.mohsen.bankservice.model.entity.Account;
 import com.mohsen.bankservice.model.entity.Card;
 import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
@@ -52,7 +53,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public CardDto cashDeposit(ReqTransactionDto reqTransactionDto) {
+    public ResCardDto cashDeposit(ReqTransactionDto reqTransactionDto) {
         String cardNo=reqTransactionDto.getCardNo();
         BigDecimal amount=reqTransactionDto.getAmount();
         Card card= cardRepository.findByCardNo(cardNo);
@@ -61,14 +62,14 @@ public class CardServiceImpl implements CardService {
         }
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         account=accountService.cashDeposit(account,amount);
-        CardDto cardDto=new CardDto();
-        cardDto=modelMapper.map(card,CardDto.class);
-        cardDto.setAccountBalance(account.getBalance());
-        return cardDto;
+        ResCardDto resCardDto=new ResCardDto();
+        resCardDto=modelMapper.map(card,ResCardDto.class);
+        resCardDto.setAccountBalance(account.getBalance());
+        return resCardDto;
     }
 
     @Override
-    public CardDto cashWithdrawal(ReqTransactionDto reqTransactionDto) {
+    public ResCardDto cashWithdrawal(ReqTransactionDto reqTransactionDto) {
         String cardNo=reqTransactionDto.getCardNo();
         BigDecimal amount=reqTransactionDto.getAmount();
         Card card= cardRepository.findByCardNo(cardNo);
@@ -77,10 +78,10 @@ public class CardServiceImpl implements CardService {
         }
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         account=accountService.cashWithdrawal(account,amount);
-        CardDto cardDto=new CardDto();
-        cardDto=modelMapper.map(card,CardDto.class);
-        cardDto.setAccountBalance(account.getBalance());
-        return cardDto;
+        ResCardDto resCardDto=new ResCardDto();
+        resCardDto=modelMapper.map(card,ResCardDto.class);
+        resCardDto.setAccountBalance(account.getBalance());
+        return resCardDto;
     }
 
     @Override

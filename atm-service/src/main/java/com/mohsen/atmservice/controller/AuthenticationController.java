@@ -2,6 +2,7 @@ package com.mohsen.atmservice.controller;
 
 
 
+import com.mohsen.atmservice.controller.dto.AuthRequest;
 import com.mohsen.atmservice.controller.dto.ReqAuthMethodDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +24,7 @@ public class AuthenticationController {
 
     @Value("${atm-emulator.bank-service.server}")
     private String bankServerUri;
-   @Value("${atm-emulator.bank-service.server.preferred-authentication-method}")
+    @Value("${atm-emulator.bank-service.server.preferred-authentication-method}")
     private String preferredAuthenticationMethodUri;
 
     @PostMapping("/signIn")

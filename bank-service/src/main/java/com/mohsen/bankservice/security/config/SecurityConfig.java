@@ -69,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/swagger-ui.html",
                             "/signIn",
                             "/signUp",
-                            "/**",
+//                            "/**",
                             "/webjars/**").permitAll().
 //                    antMatchers("/**").permitAll().
                     anyRequest().authenticated()
