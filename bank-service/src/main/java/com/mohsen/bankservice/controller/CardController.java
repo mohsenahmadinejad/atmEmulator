@@ -2,6 +2,7 @@ package com.mohsen.bankservice.controller;
 
 
 import com.mohsen.bankservice.dto.CardDto;
+import com.mohsen.bankservice.dto.ReqAuthMethodDto;
 import com.mohsen.bankservice.dto.ReqTransactionDto;
 import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
 import com.mohsen.bankservice.service.CardService;
@@ -16,7 +17,7 @@ import java.math.BigDecimal;
 
 
 @RestController
-@RequestMapping("/api/cards")
+@RequestMapping("/api/card")
 @Validated
 public class CardController {
     @Autowired
@@ -44,11 +45,11 @@ public class CardController {
         return ResponseEntity.status(HttpStatus.OK).body(cardService.checkBalance(cardNo));
     }
 
-    @PatchMapping("/{cardNo}/preferred-authentication-method/{method}")
-    public ResponseEntity setPreferredAuthenticationMethod(@PathVariable(name = "cardNo") String cardNo,
-                                                           @PathVariable(name = "method") AuthenticationMethodEnum method) {
-        cardService.setPreferredAuthenticationMethod(cardNo,method);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    @PutMapping("/preferred-authentication-method")
+    public ResponseEntity setPreferredAuthenticationMethod(@RequestBody ReqAuthMethodDto reqAuthMethodDto) {
+
+        cardService.setPreferredAuthenticationMethod(reqAuthMethodDto.getCardNo(),reqAuthMethodDto.getMethod());
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 

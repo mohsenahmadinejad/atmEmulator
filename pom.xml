@@ -19,6 +19,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>bank-service</module>
+        <module>atm-service</module>
     </modules>
 
     <dependencies>
