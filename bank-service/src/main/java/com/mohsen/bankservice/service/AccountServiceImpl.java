@@ -63,7 +63,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account cashWithdrawal(Account account, BigDecimal amount) {
         if (account.getBalance().compareTo(amount) < 0){
-           throw  new NotEnoughBalanceException("not enough balance "    );
+           throw  new NotEnoughBalanceException("Not enough balance "    );
         }
 
         account.setBalance(account.getBalance().subtract(amount));

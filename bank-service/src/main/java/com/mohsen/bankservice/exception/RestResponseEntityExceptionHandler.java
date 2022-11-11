@@ -34,6 +34,11 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.NOT_FOUND,exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exceptionDto);
     }
+    @ExceptionHandler(NotPositiveAmountException.class)
+    public ResponseEntity<ExceptionDto> cardNotPositiveAmountExceptionHandler(NotPositiveAmountException exception, WebRequest request){
+        ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.BAD_REQUEST,exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exceptionDto);
+    }
 
     @ExceptionHandler({DateTimeParseException.class,
             ConstraintViolationException.class,

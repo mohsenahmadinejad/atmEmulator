@@ -5,6 +5,7 @@ package com.mohsen.bankservice.service;
 import com.mohsen.bankservice.dto.CardDto;
 import com.mohsen.bankservice.dto.ReqTransactionDto;
 import com.mohsen.bankservice.dto.ResCardDto;
+import com.mohsen.bankservice.exception.NotPositiveAmountException;
 import com.mohsen.bankservice.model.entity.Account;
 import com.mohsen.bankservice.model.entity.Card;
 import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
@@ -56,9 +57,12 @@ public class CardServiceImpl implements CardService {
     public ResCardDto cashDeposit(ReqTransactionDto reqTransactionDto) {
         String cardNo=reqTransactionDto.getCardNo();
         BigDecimal amount=reqTransactionDto.getAmount();
+        if(amount.intValue()<0){
+            throw new NotPositiveAmountException("Not positive amount");
+        }
         Card card= cardRepository.findByCardNo(cardNo);
         if (card == null ){
-            throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));
+            throw new CardNotFoundException(String.format("Card not found by number: %s",cardNo));
         }
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         account=accountService.cashDeposit(account,amount);
@@ -72,9 +76,12 @@ public class CardServiceImpl implements CardService {
     public ResCardDto cashWithdrawal(ReqTransactionDto reqTransactionDto) {
         String cardNo=reqTransactionDto.getCardNo();
         BigDecimal amount=reqTransactionDto.getAmount();
+        if(amount.intValue()<0){
+            throw new NotPositiveAmountException("Not positive amount");
+        }
         Card card= cardRepository.findByCardNo(cardNo);
         if (card == null ){
-            throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));
+            throw new CardNotFoundException(String.format("Card not found by number: %s",cardNo));
         }
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         account=accountService.cashWithdrawal(account,amount);
@@ -88,7 +95,7 @@ public class CardServiceImpl implements CardService {
     public BigDecimal checkBalance(String cardNo) {
         Card card= cardRepository.findByCardNo(cardNo);
         if (card == null ){
-            throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));
+            throw new CardNotFoundException(String.format("Card not found by number: %s",cardNo));
         }
         Account account=accountRepository.findById(card.getAccount().getId()).get();
         return account.getBalance();
@@ -96,7 +103,7 @@ public class CardServiceImpl implements CardService {
     public void setPreferredAuthenticationMethod(String cardNo, AuthenticationMethodEnum method){
         Card card= cardRepository.findByCardNo(cardNo);
         if (card == null ){
-            throw new CardNotFoundException(String.format("Can not find Card by number: %s",cardNo));
+            throw new CardNotFoundException(String.format("Card not found by number: %s",cardNo));
         }
         card.setPreferredAuthenticationMethod(method);
         cardRepository.save(card);

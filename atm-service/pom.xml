@@ -90,6 +90,9 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <finalName>atm-service</finalName>
+
     </build>
 
 </project>
