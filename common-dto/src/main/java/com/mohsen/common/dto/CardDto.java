@@ -1,6 +1,6 @@
-package com.mohsen.atmservice.controller.dto;
+package com.mohsen.common.dto;
 
-import com.mohsen.atmservice.model.enums.AuthenticationMethodEnum;
+
 import lombok.Data;
 
 import java.math.BigDecimal;

@@ -20,6 +20,7 @@
     <modules>
         <module>bank-service</module>
         <module>atm-service</module>
+        <module>common-dto</module>
     </modules>
 
     <dependencies>

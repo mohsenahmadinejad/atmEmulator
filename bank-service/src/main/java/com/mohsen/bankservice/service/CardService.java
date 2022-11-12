@@ -1,10 +1,12 @@
 package com.mohsen.bankservice.service;
 
 
-import com.mohsen.bankservice.controller.dto.CardDto;
-import com.mohsen.bankservice.controller.dto.ReqTransactionDto;
-import com.mohsen.bankservice.controller.dto.ResCardDto;
-import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
+
+
+import com.mohsen.common.dto.AuthenticationMethodEnum;
+import com.mohsen.common.dto.CardDto;
+import com.mohsen.common.dto.ReqTransactionDto;
+import com.mohsen.common.dto.ResCardDto;
 
 import java.math.BigDecimal;
 

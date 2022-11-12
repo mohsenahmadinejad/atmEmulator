@@ -1,4 +1,4 @@
-package com.mohsen.atmservice.controller.dto;
+package com.mohsen.common.dto;
 
 
 import lombok.AllArgsConstructor;

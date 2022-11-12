@@ -1,7 +1,6 @@
 package com.mohsen.bankservice.controller;
 
 
-import com.mohsen.bankservice.controller.dto.CardDto;
 import com.mohsen.bankservice.exception.CardIsBlockedException;
 import com.mohsen.bankservice.exception.UntAuthorizedException;
 import com.mohsen.bankservice.model.entity.Card;
@@ -9,6 +8,7 @@ import com.mohsen.bankservice.repository.CardRepository;
 import com.mohsen.bankservice.security.entity.AuthRequest;
 import com.mohsen.bankservice.security.util.JwtUtil;
 import com.mohsen.bankservice.service.CardService;
+import com.mohsen.common.dto.CardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

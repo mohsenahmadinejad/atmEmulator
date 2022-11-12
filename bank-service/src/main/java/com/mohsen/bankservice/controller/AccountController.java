@@ -1,9 +1,9 @@
 package com.mohsen.bankservice.controller;
 
 
-import com.mohsen.bankservice.controller.dto.AccountDto;
 import com.mohsen.bankservice.repository.AccountRepository;
 import com.mohsen.bankservice.service.AccountService;
+import com.mohsen.common.dto.AccountDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

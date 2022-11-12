@@ -1,11 +1,12 @@
 package com.mohsen.bankservice.controller;
 
 
-import com.mohsen.bankservice.controller.dto.CardDto;
-import com.mohsen.bankservice.controller.dto.ReqAuthMethodDto;
-import com.mohsen.bankservice.controller.dto.ReqTransactionDto;
-import com.mohsen.bankservice.controller.dto.ResCardDto;
+
 import com.mohsen.bankservice.service.CardService;
+import com.mohsen.common.dto.CardDto;
+import com.mohsen.common.dto.ReqAuthMethodDto;
+import com.mohsen.common.dto.ReqTransactionDto;
+import com.mohsen.common.dto.ResCardDto;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;

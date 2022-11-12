@@ -2,8 +2,9 @@ package com.mohsen.atmservice.controller;
 
 
 
-import com.mohsen.atmservice.controller.dto.AuthRequest;
-import com.mohsen.atmservice.controller.dto.ReqAuthMethodDto;
+
+import com.mohsen.common.dto.AuthRequest;
+import com.mohsen.common.dto.ReqAuthMethodDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

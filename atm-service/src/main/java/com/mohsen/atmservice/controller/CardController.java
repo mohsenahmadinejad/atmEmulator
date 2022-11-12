@@ -2,9 +2,10 @@ package com.mohsen.atmservice.controller;
 
 
 
-import com.mohsen.atmservice.controller.dto.ReqTransactionDto;
-import com.mohsen.atmservice.controller.dto.ResCardDto;
+import com.mohsen.common.dto.AuthRequest;;
 import com.mohsen.atmservice.utils.HttpHeaderCreator;
+import com.mohsen.common.dto.ReqTransactionDto;
+import com.mohsen.common.dto.ResCardDto;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

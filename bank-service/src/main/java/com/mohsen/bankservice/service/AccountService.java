@@ -1,8 +1,8 @@
 package com.mohsen.bankservice.service;
 
 
-import com.mohsen.bankservice.controller.dto.AccountDto;
 import com.mohsen.bankservice.model.entity.Account;
+import com.mohsen.common.dto.AccountDto;
 
 import java.math.BigDecimal;
 

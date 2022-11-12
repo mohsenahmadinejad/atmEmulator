@@ -1,0 +1,14 @@
+{
+  "cardNo": "300",
+  "fingerPrint": "abc",
+  "firstName": "mohsen",
+  "id": 1,
+  "lastName": "Ahmadi",
+  "pin": "123",
+  "preferredAuthenticationMethod": "PIN",
+  "account": {
+    "accountNo": "1000",
+    "balance": 150,
+    "id": 1
+  }
+}

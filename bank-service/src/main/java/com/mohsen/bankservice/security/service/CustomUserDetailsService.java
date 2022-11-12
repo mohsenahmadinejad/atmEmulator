@@ -3,8 +3,8 @@ package com.mohsen.bankservice.security.service;
 
 
 import com.mohsen.bankservice.model.entity.Card;
-import com.mohsen.bankservice.model.enums.AuthenticationMethodEnum;
 import com.mohsen.bankservice.repository.CardRepository;
+import com.mohsen.common.dto.AuthenticationMethodEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
