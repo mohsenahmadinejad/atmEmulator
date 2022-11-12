@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
@@ -64,7 +65,7 @@ public class CardController {
         HttpEntity<ReqTransactionDto> request = new HttpEntity<ReqTransactionDto>(reqTransactionDto,
                 HttpHeaderCreator.create(MediaType.APPLICATION_JSON, token));
 
-        return restTemplate.exchange(bankServerUri +cashDepositUri,
+        return restTemplate.exchange(bankServerUri +cashWithdrawalUri,
                 HttpMethod.POST,
                 request,
                 ResCardDto.class,
@@ -87,7 +88,10 @@ public class CardController {
 
 
     public ResponseEntity<String>  fallbackMethod(Exception e)  {
-        return ResponseEntity.ok("bank-server is not available");
+        if (e instanceof ResourceAccessException) {
+            return ResponseEntity.ok("bank server is not available");
+        }
+        return ResponseEntity.ok(e.getMessage());
     }
 
 

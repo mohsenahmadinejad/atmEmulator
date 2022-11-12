@@ -38,6 +38,7 @@ public class AuthenticationController {
 
     @PostMapping("/signIn")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+
         Card card = cardRepository.findByCardNo(authRequest.getCardNumber());
         if (card==null){
             throw new UntAuthorizedException("invalid card number/password");
