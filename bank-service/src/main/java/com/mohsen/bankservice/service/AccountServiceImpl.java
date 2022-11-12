@@ -55,7 +55,6 @@ public class AccountServiceImpl implements AccountService {
                 build();
 
         accountTransactionRepository.save(accountTransaction);
-        accountRepository.save(account);
         log.info("The Balance of Account number {} updated to {} : ",account.getAccountNo(),account.getBalance());
         return accountRepository.save(account);
     }
