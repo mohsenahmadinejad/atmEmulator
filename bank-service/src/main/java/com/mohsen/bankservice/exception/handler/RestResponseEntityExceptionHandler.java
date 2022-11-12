@@ -25,27 +25,32 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler(UntAuthorizedException.class)
     public ResponseEntity<ExceptionDto> unAuthorizedExceptionHandler(UntAuthorizedException exception, WebRequest request){
         ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.UNAUTHORIZED,exception.getMessage());
+        log.error(exception.getMessage());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(exceptionDto);
     }
     @ExceptionHandler(CardIsBlockedException.class)
     public ResponseEntity<ExceptionDto> cardIsBlockedExceptionHandler(CardIsBlockedException exception, WebRequest request){
         ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.FORBIDDEN,exception.getMessage());
+        log.error(exception.getMessage());
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exceptionDto);
     }
     @ExceptionHandler(NotEnoughBalanceException.class)
     public ResponseEntity<ExceptionDto> notEnoughBalanceExceptionHandler(NotEnoughBalanceException exception, WebRequest request){
         ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.BAD_REQUEST,exception.getMessage());
+        log.error(exception.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exceptionDto);
     }
 
     @ExceptionHandler(CardNotFoundException.class)
     public ResponseEntity<ExceptionDto> cardNotFoundExceptionHandler(CardNotFoundException exception, WebRequest request){
         ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.NOT_FOUND,exception.getMessage());
+        log.error(exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exceptionDto);
     }
     @ExceptionHandler(NotPositiveAmountException.class)
     public ResponseEntity<ExceptionDto> cardNotPositiveAmountExceptionHandler(NotPositiveAmountException exception, WebRequest request){
         ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.BAD_REQUEST,exception.getMessage());
+        log.error(exception.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exceptionDto);
     }
 
@@ -56,6 +61,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     public ResponseEntity<ExceptionDto> inputParameterExceptionHandler(Exception exception, WebRequest request) {
         ExceptionDto exceptionDto=new ExceptionDto(HttpStatus.INTERNAL_SERVER_ERROR,
                 "Malformed syntax of the request params");
+        log.error(exception.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exceptionDto);
     }
 

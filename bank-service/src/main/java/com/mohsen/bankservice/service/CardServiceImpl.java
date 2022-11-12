@@ -13,6 +13,7 @@ import com.mohsen.common.enums.AuthenticationMethodEnum;
 import com.mohsen.common.dto.CardDto;
 import com.mohsen.common.dto.ReqTransactionDto;
 import com.mohsen.common.dto.ResCardDto;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,6 +23,7 @@ import java.math.BigDecimal;
 
 
 @Service
+@Slf4j
 public class CardServiceImpl implements CardService {
 
     @Autowired
@@ -47,6 +49,7 @@ public class CardServiceImpl implements CardService {
         card.setFailedAuthenticateCount(0);
         card.setPin(passwordEncoder.encode(card.getPin()));
         card.setFingerPrint(passwordEncoder.encode(card.getFingerPrint()));
+        log.info("The Card by number: {} added  ",card.getCardNo());
         return cardRepository.save(card).getId();
     }
 
@@ -66,6 +69,9 @@ public class CardServiceImpl implements CardService {
         ResCardDto resCardDto=new ResCardDto();
         resCardDto=modelMapper.map(card,ResCardDto.class);
         resCardDto.setAccountBalance(account.getBalance());
+        log.info("The amount of {} deposit to card number: {} with Account number {} : ",
+                reqTransactionDto.getAmount(),cardNo,account.getAccountNo());
+
         return resCardDto;
     }
 
@@ -90,6 +96,9 @@ public class CardServiceImpl implements CardService {
         ResCardDto resCardDto=new ResCardDto();
         resCardDto=modelMapper.map(card,ResCardDto.class);
         resCardDto.setAccountBalance(account.getBalance());
+        log.info("The amount of {} Withdraw from card number: {} with Account number {} : ",
+                reqTransactionDto.getAmount(),cardNo,account.getAccountNo());
+
         return resCardDto;
     }
 

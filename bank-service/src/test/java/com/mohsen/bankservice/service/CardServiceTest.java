@@ -84,7 +84,7 @@ class CardServiceTest {
     }
 
     @Test
-    public void whenDiposit_thenReturnNewBalance(){
+    public void whenDeposit_thenReturnNewBalance(){
         String cardNo="300";
         BigDecimal amount=new BigDecimal(10);
         BigDecimal newBalance=new BigDecimal(160);
