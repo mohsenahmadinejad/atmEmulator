@@ -1,6 +1,6 @@
 package com.mohsen.bankservice.exception.handler;
 
-import com.mohsen.bankservice.dto.ExceptionDto;
+import com.mohsen.bankservice.controller.dto.ExceptionDto;
 import com.mohsen.bankservice.exception.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

@@ -2,8 +2,8 @@ package com.mohsen.bankservice.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mohsen.bankservice.AtmTestCase;
-import com.mohsen.bankservice.dto.ReqTransactionDto;
-import com.mohsen.bankservice.dto.ResCardDto;
+import com.mohsen.bankservice.controller.dto.ReqTransactionDto;
+import com.mohsen.bankservice.controller.dto.ResCardDto;
 import com.mohsen.bankservice.model.entity.Account;
 import com.mohsen.bankservice.model.entity.Card;
 import com.mohsen.bankservice.repository.AccountRepository;

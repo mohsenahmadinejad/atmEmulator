@@ -1,7 +1,7 @@
 package com.mohsen.bankservice.controller;
 
 
-import com.mohsen.bankservice.dto.CardDto;
+import com.mohsen.bankservice.controller.dto.CardDto;
 import com.mohsen.bankservice.exception.CardIsBlockedException;
 import com.mohsen.bankservice.exception.UntAuthorizedException;
 import com.mohsen.bankservice.model.entity.Card;
