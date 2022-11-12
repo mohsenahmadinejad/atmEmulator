@@ -1,5 +1,6 @@
 package com.mohsen.common.dto;
 
+import com.mohsen.common.enums.AuthenticationMethodEnum;
 import lombok.Data;
 
 @Data

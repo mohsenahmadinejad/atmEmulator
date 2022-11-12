@@ -2,7 +2,7 @@ package com.mohsen.bankservice.repository;
 
 
 
-import com.mohsen.bankservice.model.entity.Card;
+import com.mohsen.bankservice.entity.Card;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

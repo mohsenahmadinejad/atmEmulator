@@ -4,12 +4,12 @@ package com.mohsen.bankservice.service;
 
 import com.mohsen.bankservice.exception.NotEnoughBalanceException;
 import com.mohsen.bankservice.exception.NotPositiveAmountException;
-import com.mohsen.bankservice.model.entity.Account;
-import com.mohsen.bankservice.model.entity.Card;
+import com.mohsen.bankservice.entity.Account;
+import com.mohsen.bankservice.entity.Card;
 import com.mohsen.bankservice.exception.CardNotFoundException;
 import com.mohsen.bankservice.repository.AccountRepository;
 import com.mohsen.bankservice.repository.CardRepository;
-import com.mohsen.common.dto.AuthenticationMethodEnum;
+import com.mohsen.common.enums.AuthenticationMethodEnum;
 import com.mohsen.common.dto.CardDto;
 import com.mohsen.common.dto.ReqTransactionDto;
 import com.mohsen.common.dto.ResCardDto;

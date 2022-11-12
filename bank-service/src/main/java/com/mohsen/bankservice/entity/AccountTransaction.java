@@ -1,7 +1,7 @@
-package com.mohsen.bankservice.model.entity;
+package com.mohsen.bankservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.mohsen.common.dto.TransactionType;
+import com.mohsen.common.enums.TransactionType;
 import lombok.*;
 
 import javax.persistence.*;

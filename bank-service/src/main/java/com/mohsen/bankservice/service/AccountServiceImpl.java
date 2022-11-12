@@ -2,13 +2,13 @@ package com.mohsen.bankservice.service;
 
 
 
-import com.mohsen.bankservice.model.entity.Account;
-import com.mohsen.bankservice.model.entity.AccountTransaction;
+import com.mohsen.bankservice.entity.Account;
+import com.mohsen.bankservice.entity.AccountTransaction;
 import com.mohsen.bankservice.exception.NotEnoughBalanceException;
 import com.mohsen.bankservice.repository.AccountRepository;
 import com.mohsen.bankservice.repository.AccountTransactionRepository;
 import com.mohsen.common.dto.AccountDto;
-import com.mohsen.common.dto.TransactionType;
+import com.mohsen.common.enums.TransactionType;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

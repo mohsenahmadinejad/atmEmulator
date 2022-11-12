@@ -3,7 +3,7 @@ package com.mohsen.bankservice.controller;
 
 import com.mohsen.bankservice.exception.CardIsBlockedException;
 import com.mohsen.bankservice.exception.UntAuthorizedException;
-import com.mohsen.bankservice.model.entity.Card;
+import com.mohsen.bankservice.entity.Card;
 import com.mohsen.bankservice.repository.CardRepository;
 import com.mohsen.bankservice.security.entity.AuthRequest;
 import com.mohsen.bankservice.security.util.JwtUtil;

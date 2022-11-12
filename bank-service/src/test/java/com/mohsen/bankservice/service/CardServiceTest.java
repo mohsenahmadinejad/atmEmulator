@@ -3,13 +3,11 @@ package com.mohsen.bankservice.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mohsen.bankservice.AtmTestCase;
 
-import com.mohsen.bankservice.model.entity.Account;
-import com.mohsen.bankservice.model.entity.Card;
+import com.mohsen.bankservice.entity.Account;
+import com.mohsen.bankservice.entity.Card;
 import com.mohsen.bankservice.repository.AccountRepository;
 import com.mohsen.bankservice.repository.AccountTransactionRepository;
 import com.mohsen.bankservice.repository.CardRepository;
-import com.mohsen.bankservice.service.AccountService;
-import com.mohsen.bankservice.service.CardService;
 import com.mohsen.common.dto.ReqTransactionDto;
 import com.mohsen.common.dto.ResCardDto;
 import org.junit.jupiter.api.BeforeEach;

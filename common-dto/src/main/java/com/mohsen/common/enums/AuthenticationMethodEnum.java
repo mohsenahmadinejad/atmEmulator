@@ -1,4 +1,4 @@
-package com.mohsen.common.dto;
+package com.mohsen.common.enums;
 
     public enum AuthenticationMethodEnum {
 

@@ -1,4 +1,4 @@
-package com.mohsen.bankservice.model.entity;
+package com.mohsen.bankservice.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

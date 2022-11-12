@@ -1,7 +1,7 @@
-package com.mohsen.bankservice.model.entity;
+package com.mohsen.bankservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.mohsen.common.dto.AuthenticationMethodEnum;
+import com.mohsen.common.enums.AuthenticationMethodEnum;
 import lombok.*;
 
 import javax.persistence.*;
